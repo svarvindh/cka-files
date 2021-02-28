@@ -1,0 +1,21 @@
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: sva-website-rs
+  namespace: sva-dev
+  #labels:
+  #  app: testapp
+spec:
+  replicas: 4
+  selector:
+    matchLabels: 
+      app: testapp
+  template:
+    metadata:
+      name: sva-website-pod
+      labels:
+        app: testapp
+    spec:
+      containers:
+        - name: sva-nginx-rs
+          image: nginx
